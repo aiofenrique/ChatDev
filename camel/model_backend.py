@@ -97,7 +97,10 @@ class OpenAIModel(ModelBackend):
             num_max_token = num_max_token_map[self.model_type.value]
             num_max_completion_tokens = num_max_token - num_prompt_tokens
             self.model_config_dict['max_tokens'] = num_max_completion_tokens
-
+# Remove parameters unsupported by Google Gemini endpoint
+self.model_config_dict.pop('frequency_penalty', None)
+self.model_config_dict.pop('logit_bias', None)
+self.model_config_dict.pop('presence_penalty', None)
             response = client.chat.completions.create(*args, **kwargs, model=self.model_type.value,
                                                       **self.model_config_dict)
 
