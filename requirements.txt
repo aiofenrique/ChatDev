@@ -10,3 +10,4 @@ colorama
 markdown
 faiss-cpu
 pyyaml
+easydict
