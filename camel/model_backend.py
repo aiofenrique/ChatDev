@@ -111,11 +111,14 @@ class OpenAIModel(ModelBackend):
           # Select the target model dynamically based on self.model_type
             gemini_model_map = {
                 "gpt-3.5-turbo": "gemini-2.0-flash",
+                "gpt-3.5-turbo-16k": "gemini-2.0-flash",
+                "gpt-3.5-turbo-0613": "gemini-2.0-flash",
+                "gpt-3.5-turbo-16k-0613": "gemini-2.0-flash",
                 "gpt-4": "gemini-2.0-flash",
                 "gpt-4o": "gemini-2.0-flash",
                 "gpt-4o-mini": "gemini-2.0-flash",
             }
-            target_model = gemini_model_map.get(self.model_type.value, self.model_type.value)
+            target_model = gemini_model_map.get(self.model_type.value, "gemini-2.0-flash")
 
             response = client.chat.completions.create(*args, **kwargs, model=target_model,
                                                      **self.model_config_dict)
