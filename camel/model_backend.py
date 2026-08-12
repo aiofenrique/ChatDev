@@ -1,4 +1,4 @@
-# =========== Copyright 2023 @ CAMEL-AI.org. All Rights Reserved. ===========
+    # =========== Copyright 2023 @ CAMEL-AI.org. All Rights Reserved. ===========
 # Licensed under the Apache License, Version 2.0 (the “License”);
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -108,8 +108,17 @@ class OpenAIModel(ModelBackend):
             # Strip any remaining None values
             self.model_config_dict = {k: v for k, v in self.model_config_dict.items() if v is not None}
 
-            response = client.chat.completions.create(*args, **kwargs, model="gemini-2.5-flash",
-                                                      **self.model_config_dict)
+          # Select the target model dynamically based on self.model_type
+            gemini_model_map = {
+                "gpt-3.5-turbo": "gemini-2.0-flash",
+                "gpt-4": "gemini-2.0-flash",
+                "gpt-4o": "gemini-2.0-flash",
+                "gpt-4o-mini": "gemini-2.0-flash",
+            }
+            target_model = gemini_model_map.get(self.model_type.value, self.model_type.value)
+
+            response = client.chat.completions.create(*args, **kwargs, model=target_model,
+                                                     **self.model_config_dict)
 
             cost = prompt_cost(
                 self.model_type.value,
