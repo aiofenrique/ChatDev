@@ -12,4 +12,4 @@ faiss-cpu
 pyyaml
 easydict
 beautifulsoup4
-wikipediaapi
+Wikipedia-API
