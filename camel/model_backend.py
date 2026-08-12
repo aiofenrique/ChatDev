@@ -96,7 +96,7 @@ class OpenAIModel(ModelBackend):
             }
             num_max_token = num_max_token_map[self.model_type.value]
             num_max_completion_tokens = num_max_token - num_prompt_tokens
-           self.model_config_dict['max_tokens'] = num_max_completion_tokens
+            self.model_config_dict['max_tokens'] = num_max_completion_tokens
 
             # Remove parameters unsupported or rejected by Gemini OpenAI compatibility endpoint
             self.model_config_dict.pop('frequency_penalty', None)
