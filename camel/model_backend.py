@@ -96,9 +96,9 @@ class OpenAIModel(ModelBackend):
             }
             num_max_token = num_max_token_map[self.model_type.value]
             num_max_completion_tokens = num_max_token - num_prompt_tokens
-            self.model_config_dict['max_tokens'] = num_max_completion_tokens
-            
-           # Remove parameters unsupported or rejected by Gemini OpenAI compatibility endpoint
+           self.model_config_dict['max_tokens'] = num_max_completion_tokens
+
+            # Remove parameters unsupported or rejected by Gemini OpenAI compatibility endpoint
             self.model_config_dict.pop('frequency_penalty', None)
             self.model_config_dict.pop('logit_bias', None)
             self.model_config_dict.pop('presence_penalty', None)
@@ -107,7 +107,8 @@ class OpenAIModel(ModelBackend):
 
             # Strip any remaining None values
             self.model_config_dict = {k: v for k, v in self.model_config_dict.items() if v is not None}
-            response = client.chat.completions.create(*args, **kwargs, model=self.model_type.value,
+
+            response = client.chat.completions.create(*args, **kwargs, model="gemini-1.5-flash",
                                                       **self.model_config_dict)
 
             cost = prompt_cost(
