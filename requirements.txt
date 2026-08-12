@@ -4,3 +4,6 @@ pillow
 requests
 tiktoken
 tenacity
+flask
+flask-socketio
+colorama
