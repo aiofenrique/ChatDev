@@ -9,3 +9,4 @@ flask-socketio
 colorama
 markdown
 faiss-cpu
+pyyaml
