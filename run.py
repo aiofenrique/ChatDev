@@ -10,7 +10,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# =========== Copyright 2023 @ CAMEL-AI.org. All Rights Reserved. ===========
+# =========== Copyright 2023 @ CAMEL-AI.org. All Rights Reserved. ===========import os, streamlit as st
+os.environ["OPENAI_API_KEY"] = st.secrets.get("OPENAI_API_KEY", "")
+os.environ["BASE_URL"] = st.secrets.get("OPENAI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/")
 import argparse
 import logging
 import os
