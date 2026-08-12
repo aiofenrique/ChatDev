@@ -108,7 +108,7 @@ class OpenAIModel(ModelBackend):
             # Strip any remaining None values
             self.model_config_dict = {k: v for k, v in self.model_config_dict.items() if v is not None}
 
-            response = client.chat.completions.create(*args, **kwargs, model="gemini-2.5-flash",
+            response = client.chat.completions.create(*args, **kwargs, model="gemini-2.0-flash",
                                                       **self.model_config_dict)
 
             cost = prompt_cost(
