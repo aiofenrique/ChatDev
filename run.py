@@ -1,3 +1,6 @@
+import os, streamlit as st
+os.environ["OPENAI_API_KEY"] = st.secrets.get("OPENAI_API_KEY", "")
+os.environ["BASE_URL"] = st.secrets.get("OPENAI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/")
 """CLI entry point for executing ChatDev_new workflows."""
 import argparse
 import json
