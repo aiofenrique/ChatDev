@@ -7,3 +7,4 @@ tenacity
 flask
 flask-socketio
 colorama
+markdown
