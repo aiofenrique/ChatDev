@@ -11,3 +11,5 @@ markdown
 faiss-cpu
 pyyaml
 easydict
+beautifulsoup4
+wikipediaapi
